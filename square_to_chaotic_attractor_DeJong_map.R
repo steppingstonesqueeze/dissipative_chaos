@@ -1,17 +1,17 @@
-# Square into a chaotic attractor using the Tinkerbell iterator setup
+# Square into a chaotic attractor using the Peter De Jong iterator setup
 library(ggplot2)
 
-# parameters of Tinkerbell
-a <- 0.9
-b <- -0.6013
-c <- 2.0
-d <- 0.5
+# parameters of De Jong
+a <- 1.4
+b <- -2.3
+c <- 2.4
+d <- -2.1
 
 # 2nd common parameter choice
-#a <- -0.3
-#b <- -0.6
-#c <- 2.0
-#d <- 0.27
+#a <- 2.01
+#b <- -2.53
+#c <- 1.61
+#d <- -0.33
 
 # plot params and time steps
 time_steps <- 1000
@@ -41,8 +41,8 @@ y_init <- initial_square$y
 
 for (t in 1:time_steps) {
   cat(t, "\n")
-  x_new  <- x_init*x_init - y_init*y_init + a*x_init + b * y_init
-  y_new <- 2*x_init*y_init + c*x_init + d*y_init
+  x_new  <- sin(a*y_init) - cos(b*x_init)
+  y_new <- sin(c*x_init) - cos(d*y_init)
   
   x_init <- x_new
   y_init <- y_new
@@ -53,7 +53,7 @@ for (t in 1:time_steps) {
     
     p1 <- ggplot(
       data = square
-    ) + geom_point(aes(x = x, y = y), colour = "blue") + ggtitle("Morphed data for Tinkerbell maps")
+    ) + geom_point(aes(x = x, y = y), colour = "blue") + ggtitle("Morphed data for De Jong maps")
     
     print(p1)
     
