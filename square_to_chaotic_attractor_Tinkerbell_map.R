@@ -14,8 +14,8 @@ d <- 0.5
 #d <- 0.27
 
 # plot params and time steps
-time_steps <- 100
-plot_every <- 10
+time_steps <- 1000
+plot_every <- 100
 
 #initial data params
 square_length <- 0.01
